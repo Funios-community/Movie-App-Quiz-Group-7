@@ -12,7 +12,7 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet weak var moviesTableView: UITableView!
     
-    let movies = fakeMovies()
+    let movies = DummyData.fakeMovies()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +36,9 @@ extension MovieListViewController: UITableViewDataSource {
         let movie = movies[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell") as! MovieTableViewCell
-        cell.movieImageView.image = movie.movieBanner
-        cell.titleLabel.text = movie.title
-        cell.titleOriginalLabel.text = movie.orginalTitle
-        cell.descriptionLabel.text = movie.description
-        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
-        cell.selectionStyle = .none
-
+        
+        cell.setUpData(movie: movie)
+        
         return cell
     }
 }

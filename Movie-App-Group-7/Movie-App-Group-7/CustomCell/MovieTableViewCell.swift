@@ -18,13 +18,22 @@ class MovieTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setUpData(movie: Movie) {
+        movieImageView.image = movie.movieBanner
+        titleLabel.text = movie.title
+        titleOriginalLabel.text = movie.orginalTitle
+        descriptionLabel.text = movie.description
+        
     }
     
 }

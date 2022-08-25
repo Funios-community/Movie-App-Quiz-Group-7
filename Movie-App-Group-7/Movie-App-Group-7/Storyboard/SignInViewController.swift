@@ -44,10 +44,14 @@ class SignInViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SignInSegue" {
-            let barViewControllers = segue.destination as! UITabBarController
-            let profilePage = barViewControllers.viewControllers![1] as! ProfilePageViewController
+            if let barViewControllers = segue.destination as? UITabBarController {
+                barViewControllers.viewControllers?.forEach({ controller in
+                    if let profilePage = controller as? ProfilePageViewController {
+                        profilePage.name = usernameTextField.text
+                    }
+                })
+            }
             
-            profilePage.name = usernameTextField.text
         }
     }
     

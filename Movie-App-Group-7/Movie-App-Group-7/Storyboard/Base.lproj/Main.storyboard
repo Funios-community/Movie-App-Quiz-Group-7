@@ -98,12 +98,12 @@
                     <connections>
                         <outlet property="passwordTextField" destination="4Kh-pR-rRG" id="1cs-V2-W9I"/>
                         <outlet property="usernameTextField" destination="8TO-mD-Slb" id="2zd-b9-Isp"/>
-                        <segue destination="Zmc-mD-mLh" kind="presentation" identifier="SignInSegue" modalPresentationStyle="fullScreen" id="NvK-cE-bUc"/>
+                        <segue destination="Zmc-mD-mLh" kind="presentation" identifier="SignInSegue" modalPresentationStyle="fullScreen" id="0Ix-qQ-fuc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="94"/>
+            <point key="canvasLocation" x="106" y="94"/>
         </scene>
         <!--Profile-->
         <scene sceneID="jtw-q7-Fc0">
@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foy-hG-Cgl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2718.840579710145" y="396.42857142857139"/>
+            <point key="canvasLocation" x="2719" y="499"/>
         </scene>
         <!--Movie List View Controller-->
         <scene sceneID="mGD-QN-ljB">
@@ -182,10 +182,10 @@
             </objects>
             <point key="canvasLocation" x="2718.840579710145" y="-209.59821428571428"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar View Controller-->
         <scene sceneID="tCf-m6-lkp">
             <objects>
-                <tabBarController id="Zmc-mD-mLh" sceneMemberID="viewController">
+                <tabBarController id="Zmc-mD-mLh" customClass="CustomTabBarViewController" customModule="Movie_App_Group_7" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="qi0-ex-EFC"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y6E-vz-XGL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -193,7 +193,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="UJs-q3-QzO" kind="relationship" relationship="viewControllers" id="Zg9-JG-vIM"/>
+                        <segue destination="UJs-q3-QzO" kind="relationship" relationship="viewControllers" id="5nL-Gm-i0o"/>
                         <segue destination="Ob7-2M-Eda" kind="relationship" relationship="viewControllers" id="64p-XF-xpQ"/>
                     </connections>
                 </tabBarController>
