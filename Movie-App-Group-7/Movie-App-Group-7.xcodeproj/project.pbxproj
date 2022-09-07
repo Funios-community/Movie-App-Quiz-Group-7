@@ -73,6 +73,14 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
+		227B915D28C84E41000162BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2253E50828B4836700EF5485 /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		22DA604528B7C4DB006ACBC9 /* XiB */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,10 +109,10 @@
 		BF20611C28B1194E00F0915C /* Movie-App-Group-7 */ = {
 			isa = PBXGroup;
 			children = (
-				22DA604528B7C4DB006ACBC9 /* XiB */,
 				BF20611D28B1194E00F0915C /* AppDelegate.swift */,
 				BF20611F28B1194E00F0915C /* SceneDelegate.swift */,
-				2253E50828B4836700EF5485 /* Movie.swift */,
+				227B915D28C84E41000162BE /* Model */,
+				22DA604528B7C4DB006ACBC9 /* XiB */,
 				2276533828B5F61B00A4E2EA /* Storyboard */,
 				2276533B28B5F79A00A4E2EA /* CustomCell */,
 				BF20612828B1194F00F0915C /* LaunchScreen.storyboard */,
