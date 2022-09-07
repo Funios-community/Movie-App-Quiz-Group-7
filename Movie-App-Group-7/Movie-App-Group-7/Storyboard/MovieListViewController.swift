@@ -12,16 +12,41 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet weak var moviesTableView: UITableView!
     
-    let movies = DummyData.fakeMovies()
+    var movies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         super.title = "Movie List"
+        getMovies()
         
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
         moviesTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
         moviesTableView.separatorStyle = .singleLine
+    }
+    
+    func getMovies() {
+        print("movies")
+        if let url = URL(string: "https://ghibliapi.herokuapp.com/films") {
+            URLSession(configuration: .default).dataTask(with: url) { data, urlResponse, error in
+                if let data = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodedData = try decoder.decode([Movie].self, from: data)
+                        
+                        DispatchQueue.main.async {
+                            self.movies = decodedData
+                            
+                            self.moviesTableView.reloadData()
+                        }
+
+                    } catch  {
+                        print("Something went wrong")
+                    }
+                    
+                }
+            }.resume()
+        }
     }
 
 
@@ -48,7 +73,7 @@ extension MovieListViewController: UITableViewDelegate {
         
         let detailPage = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil) as MovieDetailViewController
         
-        detailPage.movie = movies[indexPath.row]
+        detailPage.movieID = movies[indexPath.row].id
 
 
         self.navigationController?.show(detailPage, sender: self)

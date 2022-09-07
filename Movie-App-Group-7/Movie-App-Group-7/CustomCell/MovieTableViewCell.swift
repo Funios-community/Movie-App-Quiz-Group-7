@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
     
@@ -24,15 +25,15 @@ class MovieTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func setUpData(movie: Movie) {
-        movieImageView.image = movie.movieBanner
         titleLabel.text = movie.title
-        titleOriginalLabel.text = movie.orginalTitle
-        descriptionLabel.text = movie.description
+        titleOriginalLabel.text = "\(movie.originalTitle) (\(movie.originalTitleRomanised))"
+        descriptionLabel.text = movie.movieDescription
+        if let bannerURL = URL(string: movie.movieBanner) {
+            movieImageView.kf.setImage(with: bannerURL)
+        }
         
     }
     
