@@ -30,13 +30,6 @@ struct Movie: Codable {
         case people, species, locations, vehicles, url
     }
     
-    var formattedDuration: String {
-        if let duration = Int(runningTime) {
-            return "\(duration / 60)h \(duration % 60)s"
-        }
-        
-        return "\(runningTime)s"
-    }
 }
 
 
