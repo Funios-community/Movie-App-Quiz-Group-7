@@ -22,6 +22,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var posterContainer: UIView!
     @IBOutlet weak var bannerContainer: UIView!
     @IBOutlet weak var posterReloadButton: UIButton!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
  
     
     @IBOutlet weak var bannerButton: UIButton!
@@ -44,10 +45,12 @@ class MovieDetailViewController: UIViewController {
         descriptionLabel.text = nil
         posterReloadButton.isHidden = true
         bannerButton.isHidden = true
+        loadingIndicator.isHidden = true
         getMovie()
     }
     
     func getMovie() {
+        loadingIndicator.isHidden = false
         if let url = URL(string: "https://ghibliapi.herokuapp.com/films/\(movieID!)") {
             URLSession(configuration: .default).dataTask(with: url) { [self] data, urlResponse, error in
                 
@@ -67,6 +70,7 @@ class MovieDetailViewController: UIViewController {
                             self.descriptionLabel.text = movie.movieDescription
                             self.directorLabel.text = "By \(movie.director)"
                             self.durationLabel.text = movie.formattedDuration
+                            self.loadingIndicator.isHidden = true
                         }
                         
                     } catch  {

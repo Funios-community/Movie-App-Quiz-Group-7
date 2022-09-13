@@ -18,6 +18,7 @@
                 <outlet property="descriptionLabel" destination="bUK-HU-gAA" id="OXC-eF-uqs"/>
                 <outlet property="directorLabel" destination="dz9-Ec-JTl" id="bLB-D7-h20"/>
                 <outlet property="durationLabel" destination="cpv-Vq-4Ou" id="Paq-bA-4Uf"/>
+                <outlet property="loadingIndicator" destination="yf5-2z-mVB" id="VKg-zH-bpd"/>
                 <outlet property="originalTitleLabel" destination="GXM-1v-b3W" id="a53-Ny-uVs"/>
                 <outlet property="posterContainer" destination="lff-9D-bz9" id="cDY-Yx-H9f"/>
                 <outlet property="posterImageView" destination="NyH-gS-jsx" id="iRj-Sw-rBI"/>
@@ -150,6 +151,9 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yf5-2z-mVB">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -160,8 +164,10 @@
                 <constraint firstItem="gqK-oJ-jVn" firstAttribute="centerX" secondItem="Ky7-Zd-b7U" secondAttribute="centerX" id="Rnx-G2-Yh1"/>
                 <constraint firstAttribute="trailing" secondItem="bUK-HU-gAA" secondAttribute="trailing" constant="20" id="S2U-td-UJG"/>
                 <constraint firstAttribute="bottom" secondItem="gqK-oJ-jVn" secondAttribute="bottom" constant="669" id="TMM-wK-lBS"/>
+                <constraint firstItem="yf5-2z-mVB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aRk-iT-jN0"/>
                 <constraint firstItem="Ky7-Zd-b7U" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="eCd-wS-VzB"/>
                 <constraint firstItem="bUK-HU-gAA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="eIE-LA-vku"/>
+                <constraint firstItem="yf5-2z-mVB" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="msH-zD-GzF"/>
                 <constraint firstItem="gqK-oJ-jVn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-20" id="oAa-nC-NKe"/>
                 <constraint firstItem="bUK-HU-gAA" firstAttribute="top" secondItem="Ky7-Zd-b7U" secondAttribute="bottom" constant="20" id="wHo-nG-1b9"/>
             </constraints>
