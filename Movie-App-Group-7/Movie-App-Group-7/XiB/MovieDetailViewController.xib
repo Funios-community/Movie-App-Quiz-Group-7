@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,12 +12,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="Movie_App_Group_7" customModuleProvider="target">
             <connections>
+                <outlet property="bannerButton" destination="ean-oV-4yr" id="Jhs-P9-rCX"/>
+                <outlet property="bannerContainer" destination="UEg-ok-Nte" id="sEw-sc-zOx"/>
                 <outlet property="bannerImageView" destination="Hwf-L4-g51" id="iBl-lk-mrq"/>
                 <outlet property="descriptionLabel" destination="bUK-HU-gAA" id="OXC-eF-uqs"/>
                 <outlet property="directorLabel" destination="dz9-Ec-JTl" id="bLB-D7-h20"/>
                 <outlet property="durationLabel" destination="cpv-Vq-4Ou" id="Paq-bA-4Uf"/>
                 <outlet property="originalTitleLabel" destination="GXM-1v-b3W" id="a53-Ny-uVs"/>
+                <outlet property="posterContainer" destination="lff-9D-bz9" id="cDY-Yx-H9f"/>
                 <outlet property="posterImageView" destination="NyH-gS-jsx" id="iRj-Sw-rBI"/>
+                <outlet property="posterReloadButton" destination="E6q-kb-DOa" id="9ht-f5-KpB"/>
                 <outlet property="releaseDateLabel" destination="3B6-fK-s0x" id="yZE-y2-PbM"/>
                 <outlet property="titleLabel" destination="0pS-ln-mFt" id="dFm-Lh-eRw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,22 +32,80 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="castle_in_the_sky_banner" translatesAutoresizingMaskIntoConstraints="NO" id="Hwf-L4-g51">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqK-oJ-jVn">
+                    <rect key="frame" x="-20" y="-20" width="454" height="247"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEg-ok-Nte">
+                            <rect key="frame" x="0.0" y="0.0" width="454" height="227"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="castle_in_the_sky_banner" translatesAutoresizingMaskIntoConstraints="NO" id="Hwf-L4-g51">
+                                    <rect key="frame" x="0.0" y="0.0" width="454" height="227"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Hwf-L4-g51" secondAttribute="height" multiplier="2:1" id="GF7-5K-ZdS"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ean-oV-4yr">
+                                    <rect key="frame" x="203.5" y="96.5" width="47" height="34"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system"/>
+                                    <connections>
+                                        <action selector="bannerButtonPressed:" destination="-1" eventType="touchUpInside" id="WFB-Sd-2xi"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="ean-oV-4yr" firstAttribute="centerY" secondItem="UEg-ok-Nte" secondAttribute="centerY" id="EBv-dh-bVP"/>
+                                <constraint firstItem="Hwf-L4-g51" firstAttribute="top" secondItem="UEg-ok-Nte" secondAttribute="top" id="HKD-S7-INU"/>
+                                <constraint firstItem="Hwf-L4-g51" firstAttribute="leading" secondItem="UEg-ok-Nte" secondAttribute="leading" id="Yux-lL-m4U"/>
+                                <constraint firstAttribute="trailing" secondItem="Hwf-L4-g51" secondAttribute="trailing" id="gqd-Gi-6TI"/>
+                                <constraint firstAttribute="bottom" secondItem="Hwf-L4-g51" secondAttribute="bottom" id="hKJ-61-xmb"/>
+                                <constraint firstItem="ean-oV-4yr" firstAttribute="centerX" secondItem="UEg-ok-Nte" secondAttribute="centerX" id="mNW-GT-tN5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="Hwf-L4-g51" secondAttribute="height" multiplier="2:1" id="GF7-5K-ZdS"/>
+                        <constraint firstAttribute="trailing" secondItem="UEg-ok-Nte" secondAttribute="trailing" id="O6Q-ek-YFo"/>
+                        <constraint firstItem="UEg-ok-Nte" firstAttribute="leading" secondItem="gqK-oJ-jVn" secondAttribute="leading" id="exI-QR-hxw"/>
+                        <constraint firstAttribute="bottom" secondItem="UEg-ok-Nte" secondAttribute="bottom" constant="20" id="gyJ-Zq-zNm"/>
+                        <constraint firstItem="UEg-ok-Nte" firstAttribute="top" secondItem="gqK-oJ-jVn" secondAttribute="top" id="rO3-0j-AMF"/>
                     </constraints>
-                </imageView>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ky7-Zd-b7U">
                     <rect key="frame" x="20" y="227" width="374" height="145.5"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="castle_in_the_sky_image" translatesAutoresizingMaskIntoConstraints="NO" id="NyH-gS-jsx">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lff-9D-bz9">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="145.5"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="castle_in_the_sky_image" translatesAutoresizingMaskIntoConstraints="NO" id="NyH-gS-jsx">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="145.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="4Qt-Gp-jCj"/>
+                                        <constraint firstAttribute="width" secondItem="NyH-gS-jsx" secondAttribute="height" multiplier="11:16" id="qJV-V6-uji"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6q-kb-DOa">
+                                    <rect key="frame" x="26.5" y="55.5" width="47" height="34"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system"/>
+                                    <connections>
+                                        <action selector="posterReloadButtonPressed:" destination="-1" eventType="touchUpInside" id="g4g-pY-PuM"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="awk-lM-PvW"/>
-                                <constraint firstAttribute="width" secondItem="NyH-gS-jsx" secondAttribute="height" multiplier="11:16" id="vXG-gL-Ela"/>
+                                <constraint firstItem="NyH-gS-jsx" firstAttribute="top" secondItem="lff-9D-bz9" secondAttribute="top" id="2KZ-Jm-bPP"/>
+                                <constraint firstAttribute="trailing" secondItem="NyH-gS-jsx" secondAttribute="trailing" id="6RE-T7-tqa"/>
+                                <constraint firstAttribute="width" secondItem="lff-9D-bz9" secondAttribute="height" multiplier="11:16" id="9gh-uR-qh7"/>
+                                <constraint firstItem="E6q-kb-DOa" firstAttribute="centerX" secondItem="lff-9D-bz9" secondAttribute="centerX" id="9zU-oo-gZv"/>
+                                <constraint firstItem="E6q-kb-DOa" firstAttribute="centerY" secondItem="lff-9D-bz9" secondAttribute="centerY" id="Qal-C7-DhB"/>
+                                <constraint firstItem="NyH-gS-jsx" firstAttribute="leading" secondItem="lff-9D-bz9" secondAttribute="leading" id="dcq-bG-l9b"/>
+                                <constraint firstAttribute="bottom" secondItem="NyH-gS-jsx" secondAttribute="bottom" id="lq5-88-nYV"/>
+                                <constraint firstAttribute="width" constant="100" id="pJb-HL-fZL"/>
                             </constraints>
-                        </imageView>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="stZ-50-O2q">
                             <rect key="frame" x="110" y="0.0" width="264" height="144.5"/>
                             <subviews>
@@ -91,20 +154,22 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Hwf-L4-g51" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gtk-cs-Pmc"/>
+                <constraint firstItem="gqK-oJ-jVn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-20" id="0oY-no-IiA"/>
+                <constraint firstItem="Ky7-Zd-b7U" firstAttribute="top" secondItem="gqK-oJ-jVn" secondAttribute="bottom" id="Pgl-K6-Nqz"/>
                 <constraint firstAttribute="trailing" secondItem="Ky7-Zd-b7U" secondAttribute="trailing" constant="20" id="QKT-km-sTb"/>
-                <constraint firstItem="Ky7-Zd-b7U" firstAttribute="top" secondItem="Hwf-L4-g51" secondAttribute="bottom" constant="20" id="R9Y-gK-Onl"/>
+                <constraint firstItem="gqK-oJ-jVn" firstAttribute="centerX" secondItem="Ky7-Zd-b7U" secondAttribute="centerX" id="Rnx-G2-Yh1"/>
                 <constraint firstAttribute="trailing" secondItem="bUK-HU-gAA" secondAttribute="trailing" constant="20" id="S2U-td-UJG"/>
-                <constraint firstItem="Hwf-L4-g51" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aoL-Mg-yYl"/>
-                <constraint firstItem="Hwf-L4-g51" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="arm-Qq-elK"/>
+                <constraint firstAttribute="bottom" secondItem="gqK-oJ-jVn" secondAttribute="bottom" constant="669" id="TMM-wK-lBS"/>
                 <constraint firstItem="Ky7-Zd-b7U" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="eCd-wS-VzB"/>
                 <constraint firstItem="bUK-HU-gAA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="eIE-LA-vku"/>
+                <constraint firstItem="gqK-oJ-jVn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-20" id="oAa-nC-NKe"/>
                 <constraint firstItem="bUK-HU-gAA" firstAttribute="top" secondItem="Ky7-Zd-b7U" secondAttribute="bottom" constant="20" id="wHo-nG-1b9"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="72.991071428571431"/>
         </view>
     </objects>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
         <image name="castle_in_the_sky_banner" width="533" height="300"/>
         <image name="castle_in_the_sky_image" width="600" height="900"/>
         <systemColor name="systemBackgroundColor">

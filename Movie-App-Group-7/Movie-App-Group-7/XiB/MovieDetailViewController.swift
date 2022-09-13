@@ -10,7 +10,7 @@ import UIKit
 class MovieDetailViewController: UIViewController {
     
     var movieID: String!
-
+    
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,6 +19,16 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var directorLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var posterContainer: UIView!
+    @IBOutlet weak var bannerContainer: UIView!
+    @IBOutlet weak var posterReloadButton: UIButton!
+ 
+    
+    @IBOutlet weak var bannerButton: UIButton!
+    
+    
+    private var posterImageURL: String?
+    private var bannerImageURL: String?
     
     
     
@@ -32,6 +42,8 @@ class MovieDetailViewController: UIViewController {
         releaseDateLabel.text = nil
         directorLabel.text = nil
         descriptionLabel.text = nil
+        posterReloadButton.isHidden = true
+        bannerButton.isHidden = true
         getMovie()
     }
     
@@ -43,8 +55,10 @@ class MovieDetailViewController: UIViewController {
                     let decoder = JSONDecoder()
                     do {
                         let movie = try decoder.decode(MovieDetails.self, from: data)
-                        self.downloadImage(url: movie.image, image: self.posterImageView)
-                        self.downloadImage(url: movie.movieBanner, image: self.bannerImageView)
+                        posterImageURL = movie.image
+                        bannerImageURL = movie.movieBanner
+                        self.downloadImage(url: movie.image, image: self.posterImageView, imageContainer: self.posterContainer, reloadButton: self.posterReloadButton)
+                        self.downloadImage(url: movie.movieBanner, image: self.bannerImageView, imageContainer: self.bannerContainer, reloadButton: self.bannerButton)
                         
                         DispatchQueue.main.async {
                             self.titleLabel.text = movie.title
@@ -64,33 +78,58 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
-    func downloadImage(url: String , image: UIImageView){
-    
+    func downloadImage(url: String , image: UIImageView, imageContainer: UIView, reloadButton: UIButton){
+        DispatchQueue.main.async {
+            imageContainer.isShimmering = true
+            imageContainer.backgroundColor = .gray
+            
+        }
+        
+        
         if let imageURL = URL(string: url) {
             let session = URLSession(configuration: .default)
             
             session.dataTask(with: imageURL) { (data, response, error) in
-                if let e = error {
-                    print("Error downloading cat picture: \(e)")
+                if let _ = error {
+                    self.showErrorforImage(container: imageContainer, errorButton: reloadButton)
                 } else {
-                    if let res = response as? HTTPURLResponse {
-                        print("Downloaded cat picture with response code \(res.statusCode)")
+                    if let _ = response as? HTTPURLResponse {
+                  
                         if let imageData = data {
                             
-                            DispatchQueue.main.async {
+                            DispatchQueue.main.sync {
+                                imageContainer.isShimmering = false
+                                imageContainer.backgroundColor = .clear
                                 image.image = UIImage(data: imageData)!
                             }
                         } else {
-                            print("Couldn't get image: Image is nil")
+                            self.showErrorforImage(container: imageContainer, errorButton: reloadButton)
                         }
                     } else {
-                        print("Couldn't get response code for some reason")
+                        self.showErrorforImage(container: imageContainer, errorButton: reloadButton)
                     }
                 }
             }.resume()
+        } else {
+            self.showErrorforImage(container: imageContainer, errorButton: reloadButton)
         }
         
     }
-
-
+    
+    func showErrorforImage(container: UIView, errorButton: UIButton){
+        DispatchQueue.main.sync {
+            container.isShimmering = false
+            errorButton.isHidden = false
+        }
+        
+    }
+    
+    @IBAction func posterReloadButtonPressed(_ sender: UIButton) {
+        self.downloadImage(url: posterImageURL!, image: posterImageView, imageContainer: posterContainer, reloadButton: posterReloadButton)
+    }
+    
+    @IBAction func bannerButtonPressed(_ sender: UIButton) {
+                self.downloadImage(url: bannerImageURL!, image: bannerImageView, imageContainer: bannerContainer, reloadButton: bannerButton)
+    }
+    
 }
