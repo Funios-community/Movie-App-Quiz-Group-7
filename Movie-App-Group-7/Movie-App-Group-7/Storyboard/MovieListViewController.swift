@@ -72,8 +72,8 @@ extension MovieListViewController: UITableViewDataSource {
         let movie = movies[indexPath.row]
         let cell = cell as! MovieTableViewCell
         
-//        cell.downloadImage(imageURL: movie.movieBanner)
-        cell.downloadImage(imageURL: "")
+        cell.downloadImage(imageURL: movie.movieBanner)
+
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
