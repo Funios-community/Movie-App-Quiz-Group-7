@@ -52,6 +52,7 @@ class MovieListViewController: UIViewController {
 
 }
 
+// MARK: TableView DataSource
 extension MovieListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movies.count
@@ -66,8 +67,21 @@ extension MovieListViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        let cell = cell as! MovieTableViewCell
+        
+        cell.downloadImage(imageURL: movie.movieBanner)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as! MovieTableViewCell
+        cell.cancelDownloadAndRemoveImage()
+    }
 }
 
+// MARK: TableView Delegate
 extension MovieListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

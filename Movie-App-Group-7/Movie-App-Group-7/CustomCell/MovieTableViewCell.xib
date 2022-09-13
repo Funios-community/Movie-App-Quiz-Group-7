@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,12 +21,22 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vtp-k9-pdh">
                         <rect key="frame" x="0.0" y="20" width="450" height="328"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kikis_delivery_service_banner" translatesAutoresizingMaskIntoConstraints="NO" id="5OF-1h-cpH">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wtv-Lk-aif">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="225"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kikis_delivery_service_banner" translatesAutoresizingMaskIntoConstraints="NO" id="5OF-1h-cpH">
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="225"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="5OF-1h-cpH" secondAttribute="height" multiplier="2:1" id="LaI-By-0gC"/>
+                                    <constraint firstAttribute="trailing" secondItem="5OF-1h-cpH" secondAttribute="trailing" id="5rk-K2-iOV"/>
+                                    <constraint firstItem="5OF-1h-cpH" firstAttribute="top" secondItem="Wtv-Lk-aif" secondAttribute="top" id="JjQ-k8-OEs"/>
+                                    <constraint firstAttribute="bottom" secondItem="5OF-1h-cpH" secondAttribute="bottom" id="VgL-1M-UnK"/>
+                                    <constraint firstAttribute="width" secondItem="Wtv-Lk-aif" secondAttribute="height" multiplier="2:1" id="oAE-aE-d3g"/>
+                                    <constraint firstItem="5OF-1h-cpH" firstAttribute="leading" secondItem="Wtv-Lk-aif" secondAttribute="leading" id="rqk-nd-C73"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Kiki's Delivery Service" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRl-Z4-R0F">
                                 <rect key="frame" x="20" y="235" width="410" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -50,9 +61,15 @@
                             <constraint firstAttribute="trailing" secondItem="dkQ-23-8GN" secondAttribute="trailing" constant="20" id="3jr-8D-TA1"/>
                             <constraint firstItem="YfM-s2-pF4" firstAttribute="leading" secondItem="Vtp-k9-pdh" secondAttribute="leading" constant="20" id="4wR-c3-SCN"/>
                             <constraint firstAttribute="trailing" secondItem="MRl-Z4-R0F" secondAttribute="trailing" constant="20" id="J1X-1A-eCQ"/>
+                            <constraint firstItem="Wtv-Lk-aif" firstAttribute="top" secondItem="Vtp-k9-pdh" secondAttribute="top" id="SHD-u1-6Ff"/>
+                            <constraint firstAttribute="trailing" secondItem="Wtv-Lk-aif" secondAttribute="trailing" id="ThD-3d-erh"/>
+                            <constraint firstItem="Wtv-Lk-aif" firstAttribute="leading" secondItem="Vtp-k9-pdh" secondAttribute="leading" id="Uv7-Ls-k1N"/>
                             <constraint firstAttribute="trailing" secondItem="YfM-s2-pF4" secondAttribute="trailing" constant="20" id="V5f-Rd-HIj"/>
+                            <constraint firstItem="Wtv-Lk-aif" firstAttribute="leading" secondItem="Vtp-k9-pdh" secondAttribute="leading" id="VwV-jX-rNL"/>
                             <constraint firstItem="dkQ-23-8GN" firstAttribute="leading" secondItem="Vtp-k9-pdh" secondAttribute="leading" constant="20" id="ccY-1y-JI6"/>
                             <constraint firstItem="MRl-Z4-R0F" firstAttribute="leading" secondItem="Vtp-k9-pdh" secondAttribute="leading" constant="20" id="hWd-bA-ulK"/>
+                            <constraint firstItem="Wtv-Lk-aif" firstAttribute="top" secondItem="Vtp-k9-pdh" secondAttribute="top" id="n7X-5D-JGu"/>
+                            <constraint firstAttribute="trailing" secondItem="Wtv-Lk-aif" secondAttribute="trailing" id="q3M-8g-JC8"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -66,6 +83,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="descriptionLabel" destination="dkQ-23-8GN" id="Xzm-7h-Am9"/>
+                <outlet property="imageContainerView" destination="Wtv-Lk-aif" id="tKw-kb-cnW"/>
                 <outlet property="movieImageView" destination="5OF-1h-cpH" id="QaI-1R-jnO"/>
                 <outlet property="titleLabel" destination="MRl-Z4-R0F" id="TXx-pc-woc"/>
                 <outlet property="titleOriginalLabel" destination="YfM-s2-pF4" id="l4P-Kz-3pA"/>
