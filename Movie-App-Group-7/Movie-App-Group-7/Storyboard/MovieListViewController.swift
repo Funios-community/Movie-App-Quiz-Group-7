@@ -11,6 +11,7 @@ import UIKit
 class MovieListViewController: UIViewController {
 
     @IBOutlet weak var moviesTableView: UITableView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var movies: [Movie] = []
     
@@ -35,6 +36,7 @@ class MovieListViewController: UIViewController {
                         let decodedData = try decoder.decode([Movie].self, from: data)
                         
                         DispatchQueue.main.async {
+                            self.loadingIndicator.isHidden = true
                             self.movies = decodedData
                             
                             self.moviesTableView.reloadData()
@@ -42,6 +44,7 @@ class MovieListViewController: UIViewController {
 
                     } catch  {
                         print("Something went wrong")
+                        self.loadingIndicator.isHidden = true
                     }
                     
                 }
