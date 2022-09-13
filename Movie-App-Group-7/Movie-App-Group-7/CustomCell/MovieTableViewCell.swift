@@ -16,13 +16,22 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var titleOriginalLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageContainerView: UIView!
+    @IBOutlet weak var errorDescriptionLabel: UILabel!
+    @IBOutlet weak var errorButton: UIButton!
     
     private var downloadTask: URLSessionDataTask?
+    private var movieImageURL: String?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
         selectionStyle = .none
+        movieImageView.image = nil
+        titleLabel.text = nil
+        titleOriginalLabel.text = nil
+        descriptionLabel.text = nil
+        errorDescriptionLabel.isHidden = true
+        errorButton.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,6 +42,7 @@ class MovieTableViewCell: UITableViewCell {
         titleLabel.text = movie.title
         titleOriginalLabel.text = "\(movie.originalTitle) (\(movie.originalTitleRomanised))"
         descriptionLabel.text = movie.movieDescription
+        movieImageURL = movie.movieBanner
 //        if let bannerURL = URL(string: movie.movieBanner) {
 //            movieImageView.kf.setImage(with: bannerURL)
 //        }
@@ -51,13 +61,18 @@ class MovieTableViewCell: UITableViewCell {
                             self.imageContainerView.isShimmering = false
                             self.imageContainerView.backgroundColor = .clear
                             self.movieImageView.image = image
-                            
+                            self.errorDescriptionLabel.isHidden = true
+                            self.errorButton.isHidden = true
                             
                         }
+                    } else {
+                        self.showErrorforImage()
                     }
                 }
             }
             self.downloadTask?.resume()
+        } else {
+            showErrorforImage()
         }
         
         
@@ -67,5 +82,15 @@ class MovieTableViewCell: UITableViewCell {
         downloadTask?.suspend()
         downloadTask = nil
         movieImageView.image = nil
+    }
+    
+    func showErrorforImage(){
+        imageContainerView.isShimmering = false
+        errorDescriptionLabel.isHidden = false
+        errorButton.isHidden = false
+    }
+    
+    @IBAction func errorButtonPressed(_ sender: UIButton) {
+        downloadImage(imageURL: movieImageURL!)
     }
 }
