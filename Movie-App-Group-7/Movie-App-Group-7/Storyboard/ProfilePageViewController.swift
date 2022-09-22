@@ -16,14 +16,20 @@ class ProfilePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let name = name {
-            helloLabel.text = "Hello, \(name)!"
-        }
+        helloLabel.text = "Hello, \(UserDefaults.standard.string(forKey: "com.funios.usernameKey")!)!"
+        
     }
 
     @IBAction func logOutPressed(_ sender: Any) {
+        removeLoginInformation()
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    private func removeLoginInformation(){
+        UserDefaults.standard.removeObject(forKey: "com.funios.loggedInkey")
+        UserDefaults.standard.removeObject(forKey: "com.funios.usernameKey")
     }
     
 }
