@@ -9,25 +9,44 @@ import Foundation
 import UIKit
 
 class MovieListViewController: UIViewController {
-
+    
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var movies: [Movie] = []
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .clear
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         super.title = "Movie List"
-        getMovies()
+        startRefreshing()
+        getMovies(firstLoad: true)
         
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
+        moviesTableView.refreshControl = refreshControl
         moviesTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
         moviesTableView.separatorStyle = .singleLine
     }
     
-    func getMovies() {
-        print("movies")
+    @objc
+    func refresh() {
+        bindData(with: [])
+        getMovies(firstLoad: false)
+    }
+    
+    func startRefreshing() {
+        refreshControl.beginRefreshing()
+    }
+    
+    func getMovies(firstLoad: Bool) {
+        self.loadingIndicator.isHidden = false
         if let url = URL(string: "https://ghibliapi.herokuapp.com/films") {
             URLSession(configuration: .default).dataTask(with: url) { data, urlResponse, error in
                 if let data = data {
@@ -36,12 +55,11 @@ class MovieListViewController: UIViewController {
                         let decodedData = try decoder.decode([Movie].self, from: data)
                         
                         DispatchQueue.main.async {
+                            self.refreshControl.endRefreshing()
                             self.loadingIndicator.isHidden = true
-                            self.movies = decodedData
-                            
-                            self.moviesTableView.reloadData()
+                            self.bindData(with: decodedData)
                         }
-
+                        
                     } catch  {
                         print("Something went wrong")
                         self.loadingIndicator.isHidden = true
@@ -51,8 +69,11 @@ class MovieListViewController: UIViewController {
             }.resume()
         }
     }
-
-
+    
+    func bindData(with movies: [Movie]) {
+        self.movies = movies.shuffled()
+        self.moviesTableView.reloadData()
+    }
 }
 
 // MARK: TableView DataSource
@@ -76,7 +97,7 @@ extension MovieListViewController: UITableViewDataSource {
         let cell = cell as! MovieTableViewCell
         
         cell.downloadImage(imageURL: movie.movieBanner)
-
+        
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -92,8 +113,8 @@ extension MovieListViewController: UITableViewDelegate {
         let detailPage = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil) as MovieDetailViewController
         
         detailPage.movieID = movies[indexPath.row].id
-
-
+        
+        
         self.navigationController?.show(detailPage, sender: self)
     }
 }
