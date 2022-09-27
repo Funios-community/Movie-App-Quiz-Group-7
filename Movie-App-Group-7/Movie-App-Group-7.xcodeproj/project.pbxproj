@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2207F87128E316150086A5A2 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207F87028E316150086A5A2 /* Switcher.swift */; };
 		2253E50928B4836700EF5485 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253E50828B4836700EF5485 /* Movie.swift */; };
 		2266EF6828B7C64C0094DF61 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266EF6728B7C64C0094DF61 /* MovieDetailViewController.swift */; };
 		2266EF6A28B7C6650094DF61 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2266EF6928B7C6650094DF61 /* MovieDetailViewController.xib */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2207F87028E316150086A5A2 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		2253E50828B4836700EF5485 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		2266EF6728B7C64C0094DF61 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		2266EF6928B7C6650094DF61 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				BF20612828B1194F00F0915C /* LaunchScreen.storyboard */,
 				BF20612B28B1194F00F0915C /* Info.plist */,
 				BF20612628B1194F00F0915C /* Assets.xcassets */,
+				2207F87028E316150086A5A2 /* Switcher.swift */,
 			);
 			path = "Movie-App-Group-7";
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				2276533A28B5F66600A4E2EA /* ProfilePageViewController.swift in Sources */,
 				2266EF6828B7C64C0094DF61 /* MovieDetailViewController.swift in Sources */,
 				BF20612028B1194E00F0915C /* SceneDelegate.swift in Sources */,
+				2207F87128E316150086A5A2 /* Switcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,17 +35,7 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bannerImageView.image = nil
-        posterImageView.image = nil
-        titleLabel.text = nil
-        originalTitleLabel.text = nil
-        durationLabel.text = nil
-        releaseDateLabel.text = nil
-        directorLabel.text = nil
-        descriptionLabel.text = nil
-        posterReloadButton.isHidden = true
-        bannerButton.isHidden = true
-        loadingIndicator.isHidden = true
+        resetDetails()
         getMovie()
     }
     
@@ -134,6 +124,21 @@ class MovieDetailViewController: UIViewController {
     
     @IBAction func bannerButtonPressed(_ sender: UIButton) {
                 self.downloadImage(url: bannerImageURL!, image: bannerImageView, imageContainer: bannerContainer, reloadButton: bannerButton)
+    }
+    
+    
+    func resetDetails() {
+        bannerImageView.image = nil
+        posterImageView.image = nil
+        titleLabel.text = nil
+        originalTitleLabel.text = nil
+        durationLabel.text = nil
+        releaseDateLabel.text = nil
+        directorLabel.text = nil
+        descriptionLabel.text = nil
+        posterReloadButton.isHidden = true
+        bannerButton.isHidden = true
+        loadingIndicator.isHidden = true
     }
     
 }

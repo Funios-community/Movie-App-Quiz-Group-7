@@ -26,12 +26,7 @@ class MovieTableViewCell: UITableViewCell {
         super.awakeFromNib()
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
         selectionStyle = .none
-        movieImageView.image = nil
-        titleLabel.text = nil
-        titleOriginalLabel.text = nil
-        descriptionLabel.text = nil
-        errorDescriptionLabel.isHidden = true
-        errorButton.isHidden = true
+        resetCell()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -92,5 +87,15 @@ class MovieTableViewCell: UITableViewCell {
     
     @IBAction func errorButtonPressed(_ sender: UIButton) {
         downloadImage(imageURL: movieImageURL!)
+    }
+    
+    
+    func resetCell(){
+        movieImageView.image = nil
+        titleLabel.text = nil
+        titleOriginalLabel.text = nil
+        descriptionLabel.text = nil
+        errorDescriptionLabel.isHidden = true
+        errorButton.isHidden = true
     }
 }

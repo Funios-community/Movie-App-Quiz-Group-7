@@ -28,15 +28,13 @@ class SignInViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        isUserAlreadyLoggedIn()
         view.isHidden = false
     }
     
     
     @IBAction func signInPressed(_ sender: Any) {
-        let correctUser = checkCredential()
         
-        if correctUser {
+        if validCredential {
             saveIsUserLoggeedIn(userLoginSuccesfully: true)
             saveInputtedUsername(inputedUsername: usernameTextField.text!)
             
@@ -52,22 +50,8 @@ class SignInViewController: UIViewController {
         }
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SignInSegue" {
-            if let barViewControllers = segue.destination as? UITabBarController {
-                barViewControllers.viewControllers?.forEach({ controller in
-                    if let profilePage = controller as? ProfilePageViewController {
-                        profilePage.name = usernameTextField.text
-                    }
-                })
-            }
-            
-        }
-    }
-    
-    func checkCredential() -> Bool {
-        usernameTextField.text == fakeUserName && passwordTextField.text == fakePassword
+    private var validCredential: Bool {
+        self.usernameTextField.text == self.fakeUserName && self.passwordTextField.text == self.fakePassword
     }
     
     private func saveIsUserLoggeedIn(userLoginSuccesfully isLogin: Bool) {
@@ -79,10 +63,5 @@ class SignInViewController: UIViewController {
         UserDefaults.standard.set(username, forKey: usernameUserdefaultsKey)
     }
     
-    private func isUserAlreadyLoggedIn() {
-        if UserDefaults.standard.bool(forKey: loggedInUserDefaultsKey) {
-            self.performSegue(withIdentifier: "SignInSegue", sender: self)
-        }
-    }
 }
 

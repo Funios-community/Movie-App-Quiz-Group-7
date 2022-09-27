@@ -19,17 +19,20 @@ class ProfilePageViewController: UIViewController {
         helloLabel.text = "Hello, \(UserDefaults.standard.string(forKey: "com.funios.usernameKey")!)!"
         
     }
-
+    
     @IBAction func logOutPressed(_ sender: Any) {
         removeLoginInformation()
         
-        self.dismiss(animated: true, completion: nil)
+        Switcher.updateRootViewController()
+        
     }
-    
     
     private func removeLoginInformation(){
         UserDefaults.standard.removeObject(forKey: "com.funios.loggedInkey")
         UserDefaults.standard.removeObject(forKey: "com.funios.usernameKey")
     }
+    
+    
+    
     
 }
