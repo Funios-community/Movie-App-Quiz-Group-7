@@ -191,7 +191,7 @@
         <!--Custom Tab Bar View Controller-->
         <scene sceneID="tCf-m6-lkp">
             <objects>
-                <tabBarController id="Zmc-mD-mLh" customClass="CustomTabBarViewController" customModule="Movie_App_Group_7" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabID" id="Zmc-mD-mLh" customClass="CustomTabBarViewController" customModule="Movie_App_Group_7" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="qi0-ex-EFC"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y6E-vz-XGL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
