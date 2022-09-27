@@ -31,8 +31,4 @@ class Switcher {
         
     }
     
-    private func isUserAlreadyLoggedIn() -> Bool {
-        return UserDefaults.standard.bool(forKey: "com.funios.loggedInkey")
-    }
-    
 }
