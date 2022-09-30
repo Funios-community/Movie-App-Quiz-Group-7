@@ -33,7 +33,7 @@ class MovieTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setUpData(movie: Movie) {
+    func setUpData(movie: RemoteMovie) {
         titleLabel.text = movie.title
         titleOriginalLabel.text = "\(movie.originalTitle) (\(movie.originalTitleRomanised))"
         descriptionLabel.text = movie.movieDescription

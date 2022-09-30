@@ -13,7 +13,7 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    var movies: [Movie] = []
+    var movies: [RemoteMovie] = []
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -52,7 +52,7 @@ class MovieListViewController: UIViewController {
                 if let data = data {
                     let decoder = JSONDecoder()
                     do {
-                        let decodedData = try decoder.decode([Movie].self, from: data)
+                        let decodedData = try decoder.decode([RemoteMovie].self, from: data)
                         
                         DispatchQueue.main.async {
                             self.refreshControl.endRefreshing()
@@ -70,7 +70,7 @@ class MovieListViewController: UIViewController {
         }
     }
     
-    func bindData(with movies: [Movie]) {
+    func bindData(with movies: [RemoteMovie]) {
         self.movies = movies.shuffled()
         self.moviesTableView.reloadData()
     }

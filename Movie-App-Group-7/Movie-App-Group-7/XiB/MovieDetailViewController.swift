@@ -47,7 +47,7 @@ class MovieDetailViewController: UIViewController {
                 if let data = data {
                     let decoder = JSONDecoder()
                     do {
-                        let movie = try decoder.decode(MovieDetails.self, from: data)
+                        let movie = try decoder.decode(RemoteMovieDetails.self, from: data)
                         posterImageURL = movie.image
                         bannerImageURL = movie.movieBanner
                         self.downloadImage(url: movie.image, image: self.posterImageView, imageContainer: self.posterContainer, reloadButton: self.posterReloadButton)

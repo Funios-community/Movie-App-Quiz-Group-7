@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Movie: Codable {
+struct RemoteMovie: Codable {
     let id, title, originalTitle, originalTitleRomanised: String
     let image, movieBanner: String
     let movieDescription, director, producer, releaseDate: String
