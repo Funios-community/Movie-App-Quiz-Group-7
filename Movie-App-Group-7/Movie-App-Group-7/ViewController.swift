@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             
             return;
         }
-        if (Username == "ana.sdp") && (Password == "kepo") {
+        if (Username == "a") && (Password == "b") {
 //            guard let landingVC = segue.destination as? ViewController else{ return}
 //            if let Username = Username, let Password = Password {
 //                landingVC.UserNameSignIn = Username + " " + Password
@@ -48,10 +48,18 @@ class ViewController: UIViewController {
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueTabViewController" {
+            if let tabBarViewController = segue.destination as?  UITabBarController {
+                tabBarViewController.viewControllers?.forEach({ conttroler in
+                    if let logout = conttroler as? LogoutViewController {
+                        logout.name = UserNameSignIn.text
+                    }
+                })
+                
+            }
+        }
         
     }
-    
-
-
-
 }

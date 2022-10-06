@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Movie_App_Group_7" customModuleProvider="target">
             <connections>
-                <outlet property="imageDetail" destination="fFF-Kq-MUR" id="isA-mA-Pji"/>
-                <outlet property="imageDetailBanner" destination="WoR-Y3-aEB" id="zFh-GC-oV4"/>
-                <outlet property="labelBy" destination="MYB-w0-nPr" id="l45-ds-VDl"/>
-                <outlet property="labelDetail" destination="sfT-DZ-Py7" id="YZg-QR-TjM"/>
-                <outlet property="labelIsi" destination="clz-No-Uyv" id="3lx-Vy-lxP"/>
-                <outlet property="labelJam" destination="SvT-Dp-Ue8" id="nA0-Yo-kaR"/>
-                <outlet property="labelJudul" destination="nN5-9Q-5Cq" id="bQe-oa-zPK"/>
-                <outlet property="labelTahun" destination="ogS-hk-3CE" id="BHL-6r-YyZ"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="bannerImageView" destination="WoR-Y3-aEB" id="YEv-AJ-KCx"/>
+                <outlet property="descriptionLabel" destination="sfT-DZ-Py7" id="djA-SN-9zC"/>
+                <outlet property="directorLabel" destination="MYB-w0-nPr" id="aUu-iw-QMX"/>
+                <outlet property="durationLabel" destination="SvT-Dp-Ue8" id="XFm-dC-lU5"/>
+                <outlet property="originalTitleLabel" destination="clz-No-Uyv" id="zKM-3M-Bs8"/>
+                <outlet property="posterImageView" destination="fFF-Kq-MUR" id="XD6-Sa-RCf"/>
+                <outlet property="releaseDateLabel" destination="ogS-hk-3CE" id="5Ez-bQ-IVD"/>
+                <outlet property="titleLabel" destination="nN5-9Q-5Cq" id="3Vl-Kc-7jX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="JKh-VM-ofm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

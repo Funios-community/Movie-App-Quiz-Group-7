@@ -47,6 +47,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QwV-wY-XmG">
                                 <rect key="frame" x="59" y="461" width="296" height="30"/>
                                 <color key="backgroundColor" red="0.91576164959999995" green="0.50578790900000004" blue="0.52940541510000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration" identifier="SignIn"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -92,43 +93,57 @@
         <!--Profile-->
         <scene sceneID="vvz-ux-eZw">
             <objects>
-                <viewController id="f0a-ZW-jva" customClass="LogoutViewController" customModule="Movie_App_Group_7" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="y1b-18-nTO">
+                <viewController id="f0a-ZW-jva" customClass="LogoutViewController" customModule="Movie_App_Group_7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y1b-18-nTO" customClass="uiview">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qT-7a-vsT">
-                                <rect key="frame" x="142" y="433" width="131" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="logoutButton:" destination="f0a-ZW-jva" eventType="touchUpInside" id="gj9-GJ-C1v"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello, Funios" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6e-A5-6Ug">
-                                <rect key="frame" x="153" y="404" width="109" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="4ug-Jo-pNk">
+                                <rect key="frame" x="157" y="418" width="100" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, Ana" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6e-A5-6Ug">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qT-7a-vsT">
+                                        <rect key="frame" x="0.0" y="27.5" width="100" height="32.5"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutButton:" destination="f0a-ZW-jva" eventType="touchUpInside" id="gj9-GJ-C1v"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="P5z-OD-Whn"/>
+                                    <constraint firstAttribute="height" constant="60" id="z5V-Dw-7hM"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mvh-FS-Pkq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4ug-Jo-pNk" firstAttribute="centerY" secondItem="y1b-18-nTO" secondAttribute="centerY" id="Xof-aO-Glw"/>
+                            <constraint firstItem="4ug-Jo-pNk" firstAttribute="centerX" secondItem="y1b-18-nTO" secondAttribute="centerX" id="id9-vj-gHp"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person.fill" id="YY7-TD-aU9"/>
+                    <connections>
+                        <outlet property="labelLogout" destination="p6e-A5-6Ug" id="Z2A-dH-aBE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72i-P5-1ec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2192.753623188406" y="463.39285714285711"/>
         </scene>
-        <!--Movie Table Controller-->
+        <!--Movie List-->
         <scene sceneID="GI9-Mp-peZ">
             <objects>
-                <viewController id="dZS-Fq-Sys" customClass="MovieTableController" customModule="Movie_App_Group_7" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dZS-Fq-Sys" customClass="MovieListViewController" customModule="Movie_App_Group_7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="62u-YX-sWd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,9 +162,9 @@
                             <constraint firstItem="NbK-Gb-AXp" firstAttribute="trailing" secondItem="fBV-Pq-uTg" secondAttribute="trailing" id="kcY-Px-ECn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qpv-pi-q97"/>
+                    <navigationItem key="navigationItem" title="Movie List" id="qpv-pi-q97"/>
                     <connections>
-                        <outlet property="tableView" destination="NbK-Gb-AXp" id="2uR-KI-aI4"/>
+                        <outlet property="tableView" destination="NbK-Gb-AXp" id="L17-W2-Bf6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kip-yM-bxY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -187,7 +202,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="dZS-Fq-Sys" kind="relationship" relationship="rootViewController" id="O9V-Ok-K9t"/>
+                        <segue destination="dZS-Fq-Sys" kind="relationship" relationship="rootViewController" id="fl3-Kl-N3V"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewc-6t-ix0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
