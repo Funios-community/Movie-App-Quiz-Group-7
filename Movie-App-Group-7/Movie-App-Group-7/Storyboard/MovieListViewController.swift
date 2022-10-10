@@ -13,7 +13,8 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    var movies: [RemoteMovie] = []
+    var movies: [Movie] = []
+    var loader = MovieLoader()
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -46,31 +47,43 @@ class MovieListViewController: UIViewController {
     }
     
     func getMovies(firstLoad: Bool) {
-        self.loadingIndicator.isHidden = false
-        if let url = URL(string: "https://ghibliapi.herokuapp.com/films") {
-            URLSession(configuration: .default).dataTask(with: url) { data, urlResponse, error in
-                if let data = data {
-                    let decoder = JSONDecoder()
-                    do {
-                        let decodedData = try decoder.decode([RemoteMovie].self, from: data)
-                        
-                        DispatchQueue.main.async {
-                            self.refreshControl.endRefreshing()
-                            self.loadingIndicator.isHidden = true
-                            self.bindData(with: decodedData)
-                        }
-                        
-                    } catch  {
-                        print("Something went wrong")
-                        self.loadingIndicator.isHidden = true
-                    }
-                    
-                }
-            }.resume()
+        //        self.loadingIndicator.isHidden = false
+        //        if let url = URL(string: "https://ghibliapi.herokuapp.com/films") {
+        //            URLSession(configuration: .default).dataTask(with: url) { data, urlResponse, error in
+        //                if let data = data {
+        //                    let decoder = JSONDecoder()
+        //                    do {
+        //                        let decodedData = try decoder.decode([RemoteMovie].self, from: data)
+        //
+        //                        DispatchQueue.main.async {
+        //                            self.refreshControl.endRefreshing()
+        //                            self.loadingIndicator.isHidden = true
+        //                            self.bindData(with: decodedData)
+        //                        }
+        //
+        //                    } catch  {
+        //                        print("Something went wrong")
+        //                        self.loadingIndicator.isHidden = true
+        //                    }
+        //
+        //                }
+        //            }.resume()
+        //        }
+        loader.getMovieList { result in
+            self.loadingIndicator.isHidden = false
+            switch result {
+            case .success(let movies):
+                self.refreshControl.endRefreshing()
+                self.loadingIndicator.isHidden = true
+                self.bindData(with: movies)
+            case .failure(_):
+                self.loadingIndicator.isHidden = true
+            }
+            
         }
     }
     
-    func bindData(with movies: [RemoteMovie]) {
+    func bindData(with movies: [Movie]) {
         self.movies = movies.shuffled()
         self.moviesTableView.reloadData()
     }

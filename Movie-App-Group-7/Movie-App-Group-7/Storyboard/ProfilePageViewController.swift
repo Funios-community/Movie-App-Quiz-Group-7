@@ -16,23 +16,20 @@ class ProfilePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        helloLabel.text = "Hello, \(UserDefaults.standard.string(forKey: "com.funios.usernameKey")!)!"
-        
+        getUsernameForHelloLabel()
     }
     
     @IBAction func logOutPressed(_ sender: Any) {
-        removeLoginInformation()
+        AuthSingleton.instance.logout()
         
         Switcher.updateRootViewController()
         
     }
     
-    private func removeLoginInformation(){
-        UserDefaults.standard.removeObject(forKey: "com.funios.loggedInkey")
-        UserDefaults.standard.removeObject(forKey: "com.funios.usernameKey")
+    private func getUsernameForHelloLabel(){
+        if let username = AuthSingleton.instance.getUserName() {
+            helloLabel.text = "Hello, \(String(describing: username))!)!"
+        }
     }
-    
-    
-    
-    
+
 }

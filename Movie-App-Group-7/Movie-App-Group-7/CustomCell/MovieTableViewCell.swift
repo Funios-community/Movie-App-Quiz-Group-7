@@ -33,10 +33,11 @@ class MovieTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setUpData(movie: RemoteMovie) {
+    func setUpData(movie: Movie) {
         titleLabel.text = movie.title
-        titleOriginalLabel.text = "\(movie.originalTitle) (\(movie.originalTitleRomanised))"
-        descriptionLabel.text = movie.movieDescription
+//        titleOriginalLabel.text = "\(movie.originalTitle) (\(movie.originalTitleRomanised))"
+        titleOriginalLabel.text = "\(movie.orginalTitle)"
+        descriptionLabel.text = movie.description
         movieImageURL = movie.movieBanner
 //        if let bannerURL = URL(string: movie.movieBanner) {
 //            movieImageView.kf.setImage(with: bannerURL)
