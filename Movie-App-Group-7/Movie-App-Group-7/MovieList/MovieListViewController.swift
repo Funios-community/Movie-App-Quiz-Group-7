@@ -73,8 +73,6 @@ class MovieListViewController: UIViewController {
             self.loadingIndicator.isHidden = false
             switch result {
             case .success(let movies):
-                self.refreshControl.endRefreshing()
-                self.loadingIndicator.isHidden = true
                 self.bindData(with: movies)
             case .failure(_):
                 self.loadingIndicator.isHidden = true
@@ -84,6 +82,8 @@ class MovieListViewController: UIViewController {
     }
     
     func bindData(with movies: [Movie]) {
+        self.refreshControl.endRefreshing()
+        self.loadingIndicator.isHidden = true
         self.movies = movies.shuffled()
         self.moviesTableView.reloadData()
     }
