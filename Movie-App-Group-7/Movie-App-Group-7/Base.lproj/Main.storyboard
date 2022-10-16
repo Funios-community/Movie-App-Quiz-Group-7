@@ -83,6 +83,7 @@
                     <connections>
                         <outlet property="UserNameSignIn" destination="y2t-k9-bSf" id="eFU-Yc-YuI"/>
                         <outlet property="passwordSignIn" destination="LBG-qI-6iD" id="Y2T-KL-nna"/>
+                        <outlet property="signInButton" destination="QwV-wY-XmG" id="EmL-29-gvS"/>
                         <segue destination="O6o-1Q-wWL" kind="presentation" identifier="SegueTabViewController" modalPresentationStyle="fullScreen" id="zSl-Wk-BED"/>
                     </connections>
                 </viewController>
@@ -152,18 +153,29 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOB-lc-8fq">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fBV-Pq-uTg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fBV-Pq-uTg" firstAttribute="bottom" secondItem="NbK-Gb-AXp" secondAttribute="bottom" id="4ah-PV-K6L"/>
                             <constraint firstItem="NbK-Gb-AXp" firstAttribute="leading" secondItem="fBV-Pq-uTg" secondAttribute="leading" id="Fjj-OD-BG5"/>
+                            <constraint firstItem="rOB-lc-8fq" firstAttribute="leading" secondItem="fBV-Pq-uTg" secondAttribute="leading" id="I2X-aR-hyY"/>
+                            <constraint firstItem="fBV-Pq-uTg" firstAttribute="bottom" secondItem="rOB-lc-8fq" secondAttribute="bottom" constant="343" id="Yxu-l5-RCv"/>
                             <constraint firstItem="NbK-Gb-AXp" firstAttribute="top" secondItem="fBV-Pq-uTg" secondAttribute="top" id="hoU-V4-V7W"/>
                             <constraint firstItem="NbK-Gb-AXp" firstAttribute="trailing" secondItem="fBV-Pq-uTg" secondAttribute="trailing" id="kcY-Px-ECn"/>
+                            <constraint firstItem="rOB-lc-8fq" firstAttribute="trailing" secondItem="fBV-Pq-uTg" secondAttribute="trailing" id="pkM-qp-h0J"/>
+                            <constraint firstItem="rOB-lc-8fq" firstAttribute="top" secondItem="fBV-Pq-uTg" secondAttribute="top" constant="338" id="rXc-HG-FFb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movie List" id="qpv-pi-q97"/>
                     <connections>
+                        <outlet property="errorLabel" destination="rOB-lc-8fq" id="4ck-DD-Cls"/>
                         <outlet property="tableView" destination="NbK-Gb-AXp" id="L17-W2-Bf6"/>
                     </connections>
                 </viewController>

@@ -1,13 +1,13 @@
 //
-//  APIGhibli.swift
+//  APIGhibliDetail.swift
 //  Movie-App-Group-7
 //
-//  Created by Mac Pro on 04/09/22.
+//  Created by Mac Pro on 14/10/22.
 //
 
 import Foundation
 
-struct APIGhibli: Codable {
+struct APIGhibliDetail: Decodable {
     let id, title, originalTitle, originalTitleRomanised: String
     let image, movieBanner: URL
     let remoteMovieDescription, director, producer, releaseDate: String

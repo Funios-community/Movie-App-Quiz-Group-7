@@ -8,45 +8,78 @@
 import UIKit
 
 class MovieListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var errorLabel: UILabel!
     
+    lazy var Control: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
     
-    var movieList: [APIGhibli] = []
+    var loader = MovieLoader()
+    
+    var movieList: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        startRefreshing()
         getMovieList()
     }
     
-    func getMovieList() {
-        let url = URL(string: "https://ghibliapi.herokuapp.com/films")!
-     
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            do {
-                let decoder = JSONDecoder()
-                let movies = try decoder.decode([APIGhibli].self, from: data!)
-                
-                self.bindData(with: movies)
-                
-            } catch {
-                print("Error \(error)")
-            }
-        }.resume()
+    @objc
+    func refresh() {
+        bindData(with: [])
+        getMovieList()
     }
     
-    func bindData(with movies: [APIGhibli]) {
-        DispatchQueue.main.async {
-            self.movieList = movies
-            self.tableView.reloadData()
+    func startRefreshing() {
+        Control.beginRefreshing()
+    }
+    
+    func stopRefreshing() {
+        Control.endRefreshing()
+    }
+    
+    func showErrorLabel(with message: String) {
+        errorLabel.isHidden = false
+        errorLabel.text = message
+    }
+    func hideErrorLabel() {
+        errorLabel.isHidden = true
+    }
+    func getMovieList() {
+        loader.getMovieList { result in
+            self.stopRefreshing()
+            switch result {
+            case .success(let movies):
+                self.bindData(with: movies)
+            case .failure(let error):
+                self.showErrorLabel(with: error)
+            }
         }
+        
+    }
+    
+    func transformJsonDataToMovieList (with data: Data) throws -> [APIGhibli] {
+        let decoder = JSONDecoder()
+        let movies = try
+            decoder.decode([APIGhibli].self, from: data)
+        return movies
+    }
+    
+    func bindData(with movies: [Movie]) {
+        self.movieList = movies.shuffled()
+        self.tableView.reloadData()
     }
     
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = Control
         tableView.register(UINib(nibName: "MovieTableCell", bundle: nil), forCellReuseIdentifier: "movieList")
     }
     
@@ -63,7 +96,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        routeToDetailMovie(with: movieList[indexPath.row])
+        routeToDetailMovie(for: movieList[indexPath.row].id)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -73,14 +106,14 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cell = cell as! MovieTableCell
-        cell.cancelDownloadRemoveImage()
+        cell.cancelDownloadAndRemoveImage()
     }
     
-    func routeToDetailMovie(with movie: APIGhibli) {
+    func routeToDetailMovie(for MovieID: String) {
         let detailVC = DetailViewController (nibName: "DetailViewController", bundle: nil)
-        detailVC.id = movie.id
-        self.navigationController?.show(detailVC, sender: self)
-        print(movie.id)
+        detailVC.id = MovieID
+        self.show(detailVC, sender: nil)
+        
     }
 }
 
