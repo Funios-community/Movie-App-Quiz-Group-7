@@ -171,34 +171,6 @@
             </objects>
             <point key="canvasLocation" x="3089.8550724637685" y="-312.05357142857139"/>
         </scene>
-        <!--Detail Movie View Controller-->
-        <scene sceneID="cgf-jy-jbG">
-            <objects>
-                <viewController storyboardIdentifier="detailMovieController" id="9wv-5h-e6f" customClass="DetailMovieViewController" customModule="Movie_App_Group_7" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bEm-vK-oEG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUn-CK-96Q">
-                                <rect key="frame" x="0.0" y="16.5" width="414" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="9bI-nk-RuO"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="9bI-nk-RuO" firstAttribute="top" secondItem="OUn-CK-96Q" secondAttribute="bottom" id="GL5-tc-BEo"/>
-                            <constraint firstItem="OUn-CK-96Q" firstAttribute="leading" secondItem="9bI-nk-RuO" secondAttribute="leading" id="fBY-0f-tOc"/>
-                            <constraint firstItem="OUn-CK-96Q" firstAttribute="trailing" secondItem="9bI-nk-RuO" secondAttribute="trailing" id="hdA-po-RzR"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sgO-Zk-EUq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4004" y="-312"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sCf-P5-nJG">
             <objects>

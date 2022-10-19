@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A14043FC28FFE12F0095BFB6 /* DetailMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14043FB28FFE12F0095BFB6 /* DetailMovieViewController.xib */; };
 		A15ADAD828FEB97500468D32 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15ADAD728FEB97500468D32 /* HomeViewModel.swift */; };
 		A15ADADD28FF052300468D32 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15ADADC28FF052300468D32 /* ProfileViewController.swift */; };
 		A15ADAE028FF094400468D32 /* DetailMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15ADADF28FF094400468D32 /* DetailMovieViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A14043FB28FFE12F0095BFB6 /* DetailMovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMovieViewController.xib; sourceTree = "<group>"; };
 		A15ADAD728FEB97500468D32 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A15ADADC28FF052300468D32 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A15ADADF28FF094400468D32 /* DetailMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A14043FD28FFE4D70095BFB6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A15ADAE328FF14C000468D32 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		A15ADAD928FF04F400468D32 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				A15ADADF28FF094400468D32 /* DetailMovieViewController.swift */,
+				A14043FB28FFE12F0095BFB6 /* DetailMovieViewController.xib */,
 			);
 			path = "Detail Movie";
 			sourceTree = "<group>";
@@ -76,7 +87,7 @@
 		A15ADAE228FF14B100468D32 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A15ADAE328FF14C000468D32 /* UIImage+Extension.swift */,
+				A14043FD28FFE4D70095BFB6 /* Extension */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -245,6 +256,7 @@
 			files = (
 				BF20612A28B1194F00F0915C /* LaunchScreen.storyboard in Resources */,
 				BF20612728B1194F00F0915C /* Assets.xcassets in Resources */,
+				A14043FC28FFE12F0095BFB6 /* DetailMovieViewController.xib in Resources */,
 				A17C95D328FEAF79003DD800 /* MovieTableViewCell.xib in Resources */,
 				BF20612528B1194E00F0915C /* Main.storyboard in Resources */,
 				A17C95D928FEB1AC003DD800 /* dummy_movie.json in Resources */,

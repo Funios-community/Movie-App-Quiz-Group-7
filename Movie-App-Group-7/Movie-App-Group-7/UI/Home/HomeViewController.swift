@@ -50,7 +50,8 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "detailMovieController") else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = DetailMovieViewController(nibName: "DetailMovieViewController", bundle: nil) as DetailMovieViewController
+        vc.movie = viewModel.getMovies()[indexPath.row]
+        self.navigationController?.show(vc, sender: self)
     }
 }

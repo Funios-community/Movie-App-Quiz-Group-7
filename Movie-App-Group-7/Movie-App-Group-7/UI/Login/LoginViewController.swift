@@ -19,6 +19,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         passwordTextField.isSecureTextEntry = true
+        usernameTextField.text = "azri"
+        passwordTextField.text = "1234"
+        signInButton.isEnabled = true
     }
 
     override func viewDidDisappear(_ animated: Bool) {
