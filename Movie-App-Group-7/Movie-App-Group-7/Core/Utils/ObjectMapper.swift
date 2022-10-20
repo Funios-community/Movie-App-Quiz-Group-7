@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ObjectMapper {
     func mapMoviesResponseToMoviesDomain(moviesResponse: [MovieResponse]) -> [Movie] {
@@ -16,6 +17,7 @@ class ObjectMapper {
                 originalTitle: movieResponse.originalTitle,
                 originalTitleRomanised: movieResponse.originalTitleRomanised,
                 description: movieResponse.description,
+                image: movieResponse.image,
                 movieBanner: movieResponse.movieBanner,
                 director: movieResponse.director,
                 duration: movieResponse.duration,
@@ -31,6 +33,7 @@ class ObjectMapper {
             originalTitle: movieResponse.originalTitle,
             originalTitleRomanised: movieResponse.originalTitleRomanised,
             description: movieResponse.description,
+            image: movieResponse.image,
             movieBanner: movieResponse.movieBanner,
             director: movieResponse.director,
             duration: movieResponse.duration,

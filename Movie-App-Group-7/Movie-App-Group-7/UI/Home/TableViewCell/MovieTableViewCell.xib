@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,12 +20,22 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ux-2L-V6G" userLabel="ContainerView">
                         <rect key="frame" x="16" y="16" width="368" height="268"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2P-Y2-22V">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EH3-PN-kKM" userLabel="ImageView ContainerView">
                                 <rect key="frame" x="0.0" y="0.0" width="368" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2P-Y2-22V">
+                                        <rect key="frame" x="0.0" y="0.0" width="368" height="200"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="TL6-qQ-tdU"/>
+                                    <constraint firstAttribute="bottom" secondItem="c2P-Y2-22V" secondAttribute="bottom" id="G54-Xa-0iG"/>
+                                    <constraint firstItem="c2P-Y2-22V" firstAttribute="leading" secondItem="EH3-PN-kKM" secondAttribute="leading" id="H4r-Cd-ulP"/>
+                                    <constraint firstItem="c2P-Y2-22V" firstAttribute="top" secondItem="EH3-PN-kKM" secondAttribute="top" id="Nfh-w9-PCB"/>
+                                    <constraint firstAttribute="height" constant="200" id="iNy-ia-3ce"/>
+                                    <constraint firstAttribute="trailing" secondItem="c2P-Y2-22V" secondAttribute="trailing" id="uxN-6b-LJj"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="m05-oC-7DK">
                                 <rect key="frame" x="0.0" y="208" width="368" height="60"/>
                                 <subviews>
@@ -50,13 +61,16 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="c2P-Y2-22V" secondAttribute="trailing" id="Sd7-34-cE6"/>
+                            <constraint firstItem="EH3-PN-kKM" firstAttribute="leading" secondItem="2ux-2L-V6G" secondAttribute="leading" id="2fx-lr-ZvD"/>
+                            <constraint firstAttribute="trailing" secondItem="EH3-PN-kKM" secondAttribute="trailing" id="5SX-3k-q9Y"/>
+                            <constraint firstItem="m05-oC-7DK" firstAttribute="top" secondItem="EH3-PN-kKM" secondAttribute="bottom" constant="8" id="EDb-fn-oGX"/>
+                            <constraint firstItem="EH3-PN-kKM" firstAttribute="leading" secondItem="2ux-2L-V6G" secondAttribute="leading" id="Js3-qb-u3k"/>
+                            <constraint firstItem="EH3-PN-kKM" firstAttribute="top" secondItem="2ux-2L-V6G" secondAttribute="top" id="M7I-iK-lI4"/>
+                            <constraint firstItem="EH3-PN-kKM" firstAttribute="top" secondItem="2ux-2L-V6G" secondAttribute="top" id="Vle-3b-cj8"/>
                             <constraint firstItem="m05-oC-7DK" firstAttribute="leading" secondItem="2ux-2L-V6G" secondAttribute="leading" id="Ycb-Ct-94b"/>
-                            <constraint firstItem="m05-oC-7DK" firstAttribute="top" secondItem="c2P-Y2-22V" secondAttribute="bottom" constant="8" id="bhX-7f-FWp"/>
-                            <constraint firstItem="c2P-Y2-22V" firstAttribute="top" secondItem="2ux-2L-V6G" secondAttribute="top" id="gZq-I2-CGl"/>
                             <constraint firstAttribute="bottom" secondItem="m05-oC-7DK" secondAttribute="bottom" id="hGT-1H-Oug"/>
-                            <constraint firstItem="c2P-Y2-22V" firstAttribute="leading" secondItem="2ux-2L-V6G" secondAttribute="leading" id="rC7-YH-JVn"/>
                             <constraint firstAttribute="trailing" secondItem="m05-oC-7DK" secondAttribute="trailing" id="rH3-QA-CRl"/>
+                            <constraint firstAttribute="trailing" secondItem="EH3-PN-kKM" secondAttribute="trailing" id="rbU-as-147"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -69,6 +83,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="containerImageView" destination="EH3-PN-kKM" id="G55-HM-cSU"/>
                 <outlet property="movieDescriptionLabel" destination="E2O-VE-fyy" id="6YD-7T-ybm"/>
                 <outlet property="movieImageView" destination="c2P-Y2-22V" id="cHI-wl-h9i"/>
                 <outlet property="movieSubtitleLabel" destination="DxQ-9h-ojF" id="9pB-GI-cbX"/>
@@ -77,4 +92,9 @@
             <point key="canvasLocation" x="139" y="84"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

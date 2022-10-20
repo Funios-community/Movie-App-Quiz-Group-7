@@ -152,11 +152,19 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error retrieving data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOD-XU-0xd">
+                                <rect key="frame" x="115.5" y="436" width="183" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="abu-Ht-tvl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YxT-jC-a2s" firstAttribute="top" secondItem="abu-Ht-tvl" secondAttribute="top" id="2oe-k7-Ae6"/>
+                            <constraint firstItem="ZOD-XU-0xd" firstAttribute="centerX" secondItem="wyg-h6-vj0" secondAttribute="centerX" id="MTb-Rv-04T"/>
+                            <constraint firstItem="ZOD-XU-0xd" firstAttribute="centerY" secondItem="wyg-h6-vj0" secondAttribute="centerY" id="McS-qF-lXI"/>
                             <constraint firstItem="YxT-jC-a2s" firstAttribute="leading" secondItem="abu-Ht-tvl" secondAttribute="leading" id="ROa-W4-SZZ"/>
                             <constraint firstItem="abu-Ht-tvl" firstAttribute="bottom" secondItem="YxT-jC-a2s" secondAttribute="bottom" id="b9e-Do-Q5F"/>
                             <constraint firstItem="abu-Ht-tvl" firstAttribute="trailing" secondItem="YxT-jC-a2s" secondAttribute="trailing" id="yfl-ev-LTD"/>
@@ -164,6 +172,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movie List" id="sVS-pg-XdZ"/>
                     <connections>
+                        <outlet property="errorLabel" destination="ZOD-XU-0xd" id="Eou-CJ-63l"/>
                         <outlet property="movieTableView" destination="YxT-jC-a2s" id="4Si-oH-3ii"/>
                     </connections>
                 </viewController>
@@ -189,11 +198,11 @@
             </objects>
             <point key="canvasLocation" x="1293" y="49"/>
         </scene>
-        <!--Home-->
+        <!--Movies-->
         <scene sceneID="n3Y-bN-B4g">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6KZ-kL-9az" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="opticaldiscdrive" catalog="system" id="dnA-d2-aUw"/>
+                    <tabBarItem key="tabBarItem" title="Movies" image="film.fill" catalog="system" id="dnA-d2-aUw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zrP-S9-Qes">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -210,7 +219,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="opticaldiscdrive" catalog="system" width="128" height="88"/>
+        <image name="film.fill" catalog="system" width="128" height="93"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

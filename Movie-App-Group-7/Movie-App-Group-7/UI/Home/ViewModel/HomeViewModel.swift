@@ -26,7 +26,7 @@ class HomeViewModel {
             case .failure(let message):
                 completion(.failure(message))
             case .success(let movies):
-                self.movies = movies
+                self.movies = movies.shuffled()
                 completion(.success)
             }
         }

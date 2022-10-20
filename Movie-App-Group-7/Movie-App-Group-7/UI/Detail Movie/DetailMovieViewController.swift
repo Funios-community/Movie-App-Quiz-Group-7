@@ -11,7 +11,9 @@ class DetailMovieViewController: UIViewController {
     public var movieId: String? = nil
     
     @IBOutlet private weak var movieImageView: UIImageView!
+    @IBOutlet private weak var movieImageContainerView: UIView!
     @IBOutlet private weak var movieBannerImageView: UIImageView!
+    @IBOutlet private weak var movieBannerContainerView: UIView!
     @IBOutlet private weak var movieTitleLabel: UILabel!
     @IBOutlet private weak var movieJapaneseTitleLabel: UILabel!
     @IBOutlet private weak var movieDurationLabel: UILabel!
@@ -63,14 +65,60 @@ class DetailMovieViewController: UIViewController {
     
     private func bindView(_ movie: Movie) {
         guard let url = URL(string: movie.movieBanner) else { return }
-        
-        movieImageView.loadFromUrl(url: url)
-        movieBannerImageView.loadFromUrl(url: url)
+        guard let urlPoster = URL(string: movie.image) else { return }
+    
+        loadImageUsingKingfisher(url: url, urlPoster: urlPoster)
         movieTitleLabel.text = movie.title
         movieJapaneseTitleLabel.text = movie.originalTitle + "(\(movie.originalTitleRomanised))"
-        movieDurationLabel.text = movie.duration
+        movieDurationLabel.text = movie.formattedDuration
         movieYearLabel.text = movie.releaseDate
         movieDirectorLabel.text = "By \(movie.director)"
         movieDescriptionLabel.text = movie.description
+    }
+    
+    private func loadImageUsingKingfisher(url: URL, urlPoster: URL) {
+        isDownloadingImage(true, movieImageContainerView)
+        isDownloadingImage(true, movieBannerContainerView)
+        
+        movieImageView.kf.setImage(
+            with: url,
+            placeholder: nil,
+            options: nil,
+            progressBlock: { [weak self] _, _ in
+                self?.isDownloadingImage(true, self?.movieImageContainerView)
+            },
+            completionHandler:  { [weak self] result in
+                switch result {
+                case .success(_):
+                    self?.isDownloadingImage(false, self?.movieImageContainerView)
+                case .failure(let error):
+                    self?.isDownloadingImage(false, self?.movieImageContainerView)
+                    print(error)
+                }
+            }
+        )
+        
+        movieBannerImageView.kf.setImage(
+            with: urlPoster,
+            placeholder: nil,
+            options: nil,
+            progressBlock: { [weak self] _, _ in
+                self?.isDownloadingImage(true, self?.movieBannerContainerView)
+            },
+            completionHandler:  { [weak self] result in
+                switch result {
+                case .success(_):
+                    self?.isDownloadingImage(false, self?.movieBannerContainerView)
+                case .failure(let error):
+                    self?.isDownloadingImage(false, self?.movieBannerContainerView)
+                    print(error)
+                }
+            }
+        )
+    }
+    
+    private func isDownloadingImage(_ isDownloading: Bool, _ view: UIView?) {
+        view?.isShimmering = isDownloading
+        view?.backgroundColor = isDownloading ? .gray : .clear
     }
 }
