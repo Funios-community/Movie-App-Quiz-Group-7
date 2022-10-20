@@ -7,27 +7,31 @@
 
 import Foundation
 
+enum RetrievingMoviesState {
+    case success
+    case failure(String)
+}
+
 class HomeViewModel {
     private var movies = [Movie]()
+    private let movieNetworkModel : MovieNetworkModel
     
-    func retrieveMovies() {
-        guard let path = Bundle.main.path(forResource: "dummy_movie", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        
-        do {
-            let jsonData = try Data(contentsOf: url)
-            let result : [Movie]? = try JSONDecoder().decode([Movie].self, from: jsonData)
-            
-            if let data = result {
-                movies = data
-            } else {
-                print("Fail to parse!")
-            }
-        } catch {
-            print("Terjadi error dengan pesan \(error)")
-        }
+    init(movieNetworkModel: MovieNetworkModel) {
+        self.movieNetworkModel = movieNetworkModel
     }
     
+    func retrieveMovies(completion: @escaping (RetrievingMoviesState) -> ()) {
+        movieNetworkModel.getMovies { result in
+            switch result {
+            case .failure(let message):
+                completion(.failure(message))
+            case .success(let movies):
+                self.movies = movies
+                completion(.success)
+            }
+        }
+    }
+
     func getMovies() -> [Movie] {
         self.movies
     }

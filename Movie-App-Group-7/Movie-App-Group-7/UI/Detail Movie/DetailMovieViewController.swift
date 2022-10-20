@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailMovieViewController: UIViewController {
-    public var movie: Movie? = nil
+    public var movieId: String? = nil
     
     @IBOutlet private weak var movieImageView: UIImageView!
     @IBOutlet private weak var movieBannerImageView: UIImageView!
@@ -20,22 +20,40 @@ class DetailMovieViewController: UIViewController {
     @IBOutlet private weak var movieDescriptionLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
     
+    private let viewModel = DetailMovieViewModel(movieNetworkModel: MovieDefaultNetworkModel())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         
-        guard let movie = movie else {
+        guard let movieId = movieId else {
             self.navigationController?.popViewController(animated: true)
             return
         }
         
         configureScrollView()
-        bindView(movie)
+        retrieveDetailMovie(movieId)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func retrieveDetailMovie(_ movieId: String) {
+        
+        viewModel.retrieveMovie(movieId: movieId) { [weak self] result in
+            switch result {
+            case .success(let optionalMovie):
+                guard let movie = optionalMovie else {
+                    self?.navigationController?.popViewController(animated: true)
+                    return
+                }
+                self?.bindView(movie)
+            case .failure(let message):
+                print(message)
+            }
+        }
     }
     
     private func configureScrollView() {

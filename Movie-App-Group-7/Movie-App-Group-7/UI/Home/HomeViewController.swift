@@ -10,15 +10,26 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!
-    private let viewModel = HomeViewModel()
+    private let viewModel = HomeViewModel(movieNetworkModel: MovieDefaultNetworkModel())
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureTableView()
         registerTableViewCell()
-        viewModel.retrieveMovies()
+        retrieveMovies()
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func retrieveMovies() {
+        viewModel.retrieveMovies { [weak self] result in
+            switch result {
+            case .failure(let message):
+                print(message)
+            case .success:
+                self?.movieTableView.reloadData()
+            }
+        }
     }
     
     private func configureTableView() {
@@ -51,7 +62,7 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailMovieViewController(nibName: "DetailMovieViewController", bundle: nil) as DetailMovieViewController
-        vc.movie = viewModel.getMovies()[indexPath.row]
+        vc.movieId = viewModel.getMovies()[indexPath.row].id
         self.navigationController?.show(vc, sender: self)
     }
 }

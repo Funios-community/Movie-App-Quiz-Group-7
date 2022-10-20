@@ -1,13 +1,13 @@
 //
-//  Movie.swift
+//  MovieResponse.swift
 //  Movie-App-Group-7
 //
-//  Created by Mohammad Azri on 18/10/22.
+//  Created by Mohammad Azri on 20/10/22.
 //
 
 import Foundation
 
-struct Movie : Codable {
+struct MovieResponse : Codable {
     let id: String
     let title: String
     let originalTitle: String

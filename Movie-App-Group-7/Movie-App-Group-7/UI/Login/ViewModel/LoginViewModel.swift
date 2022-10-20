@@ -22,9 +22,14 @@ class LoginViewModel {
     
     func isAccountExist(username: String, password: String) -> Bool {
         if username == "azri" && password == "1234" {
+            saveUserCredential(username)
             return true
         }
         
         return false
+    }
+    
+    private func saveUserCredential(_ username: String) {
+        UserDefaultModel.instance.login(username: username)
     }
 }
