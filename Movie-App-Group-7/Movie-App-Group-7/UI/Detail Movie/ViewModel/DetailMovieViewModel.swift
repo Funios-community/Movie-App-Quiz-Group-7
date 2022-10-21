@@ -7,25 +7,29 @@
 
 import Foundation
 
-enum RetrievingDetailMovieState {
-    case success(Movie?)
-    case failure(String)
-}
-
 class DetailMovieViewModel {
+    var showLoading: Observer<Bool>?
+    var showErrorMessage: Observer<String?>?
+    var movieObservable: Observer<Movie>?
+    
     private let movieNetworkModel : MovieNetworkModel
     
     init(movieNetworkModel: MovieNetworkModel) {
         self.movieNetworkModel = movieNetworkModel
     }
     
-    func retrieveMovie(movieId: String, completion : @escaping (RetrievingDetailMovieState) -> ()) {
-        movieNetworkModel.getMovie(movieId: movieId) { result in
+    func retrieveMovie(movieId: String) {
+        showLoading?(true)
+        showErrorMessage?(nil)
+        
+        movieNetworkModel.getMovie(movieId: movieId) { [weak self] result in
             switch result {
             case .success(let movie):
-                completion(.success(movie))
+                self?.showLoading?(false)
+                self?.movieObservable?(movie)
             case .failure(let message):
-                completion(.failure(message))
+                self?.showLoading?(false)
+                self?.showErrorMessage?(message)
             }
         }
         

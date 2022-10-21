@@ -25,21 +25,14 @@ class MovieTableViewCell: UITableViewCell {
     
     func loadImageUsingKingfisher(url: URL) {
         isDownloadingImage(true)
-        movieImageView.kf.setImage(
-            with: url,
-            placeholder: nil,
-            options: nil,
-            progressBlock: nil,
-            completionHandler:  { [weak self] result in
-                switch result {
-                case .success(_):
-                    self?.isDownloadingImage(false)
-                case .failure(let error):
-                    self?.isDownloadingImage(false)
-                    print(error)
-                }
+        movieImageView.kf.setImage(with: url) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.isDownloadingImage(false)
+            case .failure(_):
+                self?.isDownloadingImage(false)
             }
-        )
+        }
     }
     
     func cancelDownloadingImage() {

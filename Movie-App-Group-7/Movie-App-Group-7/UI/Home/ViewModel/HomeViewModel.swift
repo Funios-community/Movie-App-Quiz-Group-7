@@ -7,12 +7,11 @@
 
 import Foundation
 
-enum RetrievingMoviesState {
-    case success
-    case failure(String)
-}
-
 class HomeViewModel {
+    var showLoading: Observer<Bool>?
+    var showErrorMessage: Observer<String?>?
+    var moviesObservable: Observer<[Movie]>?
+    
     private var movies = [Movie]()
     private let movieNetworkModel : MovieNetworkModel
     
@@ -20,14 +19,19 @@ class HomeViewModel {
         self.movieNetworkModel = movieNetworkModel
     }
     
-    func retrieveMovies(completion: @escaping (RetrievingMoviesState) -> ()) {
-        movieNetworkModel.getMovies { result in
+    func retrieveMovies(isRefreshing: Bool = false) {
+        showLoading?(isRefreshing)
+        showErrorMessage?(nil)
+        
+        movieNetworkModel.getMovies { [weak self] result in
             switch result {
             case .failure(let message):
-                completion(.failure(message))
+                self?.showLoading?(false)
+                self?.showErrorMessage?(message)
             case .success(let movies):
-                self.movies = movies.shuffled()
-                completion(.success)
+                self?.showLoading?(false)
+                self?.movies = movies.shuffled()
+                self?.moviesObservable?(movies.shuffled())
             }
         }
     }

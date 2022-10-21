@@ -21,6 +21,8 @@ class DetailMovieViewController: UIViewController {
     @IBOutlet private weak var movieDirectorLabel: UILabel!
     @IBOutlet private weak var movieDescriptionLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var errorLabel: UILabel!
+    @IBOutlet private weak var contentView: UIView!
     
     private let viewModel = DetailMovieViewModel(movieNetworkModel: MovieDefaultNetworkModel())
     
@@ -29,12 +31,13 @@ class DetailMovieViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         
         guard let movieId = movieId else {
-            self.navigationController?.popViewController(animated: true)
+            self.showError(message: "Movie ID not found", true)
             return
         }
         
+        bindObservers()
+        viewModel.retrieveMovie(movieId: movieId)
         configureScrollView()
-        retrieveDetailMovie(movieId)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,19 +45,19 @@ class DetailMovieViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    private func retrieveDetailMovie(_ movieId: String) {
+    private func bindObservers() {
+        viewModel.movieObservable = { [weak self] movie in
+            self?.bindView(movie)
+        }
         
-        viewModel.retrieveMovie(movieId: movieId) { [weak self] result in
-            switch result {
-            case .success(let optionalMovie):
-                guard let movie = optionalMovie else {
-                    self?.navigationController?.popViewController(animated: true)
-                    return
-                }
-                self?.bindView(movie)
-            case .failure(let message):
-                print(message)
+        viewModel.showErrorMessage = { [weak self] message in
+            if let message = message {
+                self?.showError(message: message, true)
             }
+        }
+        
+        viewModel.showLoading = { [weak self] isLoading in
+            self?.contentView.isShimmering = isLoading
         }
     }
     
@@ -77,48 +80,32 @@ class DetailMovieViewController: UIViewController {
     }
     
     private func loadImageUsingKingfisher(url: URL, urlPoster: URL) {
-        isDownloadingImage(true, movieImageContainerView)
-        isDownloadingImage(true, movieBannerContainerView)
+        downloadingImage(for: movieImageView, with: url, movieImageContainerView)
+        downloadingImage(for: movieBannerImageView, with: urlPoster, movieBannerContainerView)
+    }
+    
+    private func downloadingImage(for imageView: UIImageView, with url: URL, _ view: UIView?) {
+        isDownloadingImage(true, view)
         
-        movieImageView.kf.setImage(
-            with: url,
-            placeholder: nil,
-            options: nil,
-            progressBlock: { [weak self] _, _ in
-                self?.isDownloadingImage(true, self?.movieImageContainerView)
-            },
-            completionHandler:  { [weak self] result in
-                switch result {
-                case .success(_):
-                    self?.isDownloadingImage(false, self?.movieImageContainerView)
-                case .failure(let error):
-                    self?.isDownloadingImage(false, self?.movieImageContainerView)
-                    print(error)
-                }
+        imageView.kf.setImage(with: url) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.isDownloadingImage(false, view)
+            case .failure(let error):
+                self?.isDownloadingImage(false, view)
+                print(error)
             }
-        )
-        
-        movieBannerImageView.kf.setImage(
-            with: urlPoster,
-            placeholder: nil,
-            options: nil,
-            progressBlock: { [weak self] _, _ in
-                self?.isDownloadingImage(true, self?.movieBannerContainerView)
-            },
-            completionHandler:  { [weak self] result in
-                switch result {
-                case .success(_):
-                    self?.isDownloadingImage(false, self?.movieBannerContainerView)
-                case .failure(let error):
-                    self?.isDownloadingImage(false, self?.movieBannerContainerView)
-                    print(error)
-                }
-            }
-        )
+        }
     }
     
     private func isDownloadingImage(_ isDownloading: Bool, _ view: UIView?) {
         view?.isShimmering = isDownloading
         view?.backgroundColor = isDownloading ? .gray : .clear
+    }
+    
+    private func showError(message: String? = nil, _ isError: Bool = false) {
+        errorLabel.isHidden = !isError
+        scrollView.isHidden = isError
+        errorLabel.text = message
     }
 }

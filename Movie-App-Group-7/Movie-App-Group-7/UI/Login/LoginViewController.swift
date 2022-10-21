@@ -47,21 +47,7 @@ class LoginViewController: UIViewController {
     
     private func showDialog() {
         let alert = UIAlertController(title: "Failed", message: "Wrong Credentials", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-            switch action.style {
-            case .default:
-                print("default")
-                
-            case .cancel:
-                print("cancel")
-                
-            case .destructive:
-                print("destructive")
-                
-            default:
-                print("default")
-            }
-        }))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
     

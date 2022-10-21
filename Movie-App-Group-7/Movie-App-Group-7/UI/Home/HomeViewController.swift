@@ -16,31 +16,30 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bindObservers()
         configureTableView()
         configureRefreshControl()
         registerTableViewCell()
-        retrieveMovies()
-        self.tabBarController?.tabBar.isHidden = false
+        viewModel.retrieveMovies()
     }
     
-    private func retrieveMovies(isRefreshing: Bool = false) {
-        if isRefreshing {
-            self.movieTableView.refreshControl?.beginRefreshing()
+    private func bindObservers() {
+        viewModel.moviesObservable = { [weak self] movies in
+            self?.showError()
+            self?.movieTableView.reloadData()
         }
         
-        viewModel.retrieveMovies { [weak self] result in
-            switch result {
-            case .failure(_):
-                if isRefreshing {
-                    self?.movieTableView.refreshControl?.endRefreshing()
-                }
-                self?.showError(false)
-            case .success:
-                if isRefreshing {
-                    self?.movieTableView.refreshControl?.endRefreshing()
-                }
-                self?.showError()
-                self?.movieTableView.reloadData()
+        viewModel.showErrorMessage = { [weak self] message in
+            if let message = message {
+                self?.showError(true, with: message)
+            }
+        }
+        
+        viewModel.showLoading = { [weak self] isLoading in
+            if isLoading {
+                self?.movieTableView.refreshControl?.beginRefreshing()
+            } else {
+                self?.movieTableView.refreshControl?.endRefreshing()
             }
         }
     }
@@ -58,15 +57,16 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func pullToRefresh() {
-        retrieveMovies(isRefreshing: true)
+        viewModel.retrieveMovies(isRefreshing: true)
     }
     
     private func registerTableViewCell() {
         movieTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
     }
     
-    private func showError(_ isError: Bool = true) {
-        errorLabel.isHidden = isError
+    private func showError(_ isError: Bool = false, with message: String? = nil) {
+        errorLabel.isHidden = !isError
+        errorLabel.text = message
     }
 }
 

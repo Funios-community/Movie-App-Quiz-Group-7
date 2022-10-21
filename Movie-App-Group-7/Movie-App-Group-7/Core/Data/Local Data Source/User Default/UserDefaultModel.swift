@@ -18,10 +18,6 @@ class UserDefaultModel {
         userDefaults = UserDefaults.standard
     }
     
-    init(userDefaults: UserDefaults) {
-        self.userDefaults = userDefaults
-    }
-    
     func login(username: String) {
         userDefaults.set(username, forKey: usernameUserDefaultsKey)
         userDefaults.set(true, forKey: loggedInUserDefaultsKey)
