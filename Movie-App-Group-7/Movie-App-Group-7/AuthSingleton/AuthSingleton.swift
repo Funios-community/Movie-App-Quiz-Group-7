@@ -8,8 +8,8 @@
 import Foundation
 
 class AuthSingleton {
-    private let loggedInUserDefaultsKey = "com.funios.loggedInkey"
-    private let usernameUserdefaultsKey = "com.funios.usernameKey"
+    let loggedInUserDefaultsKey = "com.funios.loggedInkey"
+    let usernameUserdefaultsKey = "com.funios.usernameKey"
 
     static let instance = AuthSingleton()
     private let userDefaults: UserDefaults

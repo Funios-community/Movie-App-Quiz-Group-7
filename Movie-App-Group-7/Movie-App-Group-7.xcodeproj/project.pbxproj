@@ -9,20 +9,20 @@
 /* Begin PBXBuildFile section */
 		5D1D03B1290271A3002709C0 /* kfMovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D03AF290271A3002709C0 /* kfMovieList.swift */; };
 		5D1D03B2290271A3002709C0 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D03B0290271A3002709C0 /* MovieList.swift */; };
-		5DE3207929027318009613A3 /* AuthSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE3207829027318009613A3 /* AuthSingleton.swift */; };
+		5D4A986429036E2500D914CE /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A986329036E2500D914CE /* ProfilePageController.swift */; };
+		5D4A986629036E2900D914CE /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A986529036E2900D914CE /* LoginController.swift */; };
+		5D4A98702903AA7A00D914CE /* AuthSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A986F2903AA4A00D914CE /* AuthSingleton.swift */; };
 		5DE3207C2902733B009613A3 /* UIViewAndShimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE3207B2902733B009613A3 /* UIViewAndShimmering.swift */; };
 		5DE320A72902760C009613A3 /* MovieDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DE320A02902760C009613A3 /* MovieDetails.xib */; };
 		5DE320A82902760C009613A3 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE320A12902760C009613A3 /* MovieDetails.swift */; };
 		5DE320B329027646009613A3 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE320AF29027646009613A3 /* MovieListViewController.swift */; };
 		5DE320B429027646009613A3 /* MovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE320B029027646009613A3 /* MovieLoader.swift */; };
-		5DE320B529027646009613A3 /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE320B129027646009613A3 /* ProfilePageController.swift */; };
 		5DE320BD290276A9009613A3 /* MovieListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DE320B8290276A9009613A3 /* MovieListCell.xib */; };
 		5DE320C0290276A9009613A3 /* MovieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE320BC290276A9009613A3 /* MovieListCell.swift */; };
 		5DE320C2290276D6009613A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE320C1290276D6009613A3 /* ViewController.swift */; };
 		5DE320C4290276E8009613A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DE320C3290276E8009613A3 /* Assets.xcassets */; };
 		5DE320C62902776A009613A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DE320C52902776A009613A3 /* Main.storyboard */; };
 		5DE320C9290277C8009613A3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5DE320C8290277C8009613A3 /* Kingfisher */; };
-		5DE320CB2902782E009613A3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE320CA2902782E009613A3 /* LoginController.swift */; };
 		BF20611E28B1194E00F0915C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF20611D28B1194E00F0915C /* AppDelegate.swift */; };
 		BF20612028B1194E00F0915C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF20611F28B1194E00F0915C /* SceneDelegate.swift */; };
 		BF20612A28B1194F00F0915C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF20612828B1194F00F0915C /* LaunchScreen.storyboard */; };
@@ -31,19 +31,19 @@
 /* Begin PBXFileReference section */
 		5D1D03AF290271A3002709C0 /* kfMovieList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kfMovieList.swift; sourceTree = "<group>"; };
 		5D1D03B0290271A3002709C0 /* MovieList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
-		5DE3207829027318009613A3 /* AuthSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthSingleton.swift; sourceTree = "<group>"; };
+		5D4A986329036E2500D914CE /* ProfilePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfilePageController.swift; path = "Movie-App-Group-7/Loginlogout/ProfilePageController.swift"; sourceTree = SOURCE_ROOT; };
+		5D4A986529036E2900D914CE /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = "Movie-App-Group-7/Loginlogout/LoginController.swift"; sourceTree = SOURCE_ROOT; };
+		5D4A986F2903AA4A00D914CE /* AuthSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSingleton.swift; sourceTree = "<group>"; };
 		5DE3207B2902733B009613A3 /* UIViewAndShimmering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewAndShimmering.swift; sourceTree = "<group>"; };
 		5DE320A02902760C009613A3 /* MovieDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetails.xib; sourceTree = "<group>"; };
 		5DE320A12902760C009613A3 /* MovieDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		5DE320AF29027646009613A3 /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		5DE320B029027646009613A3 /* MovieLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieLoader.swift; sourceTree = "<group>"; };
-		5DE320B129027646009613A3 /* ProfilePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageController.swift; sourceTree = "<group>"; };
 		5DE320B8290276A9009613A3 /* MovieListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieListCell.xib; sourceTree = "<group>"; };
 		5DE320BC290276A9009613A3 /* MovieListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListCell.swift; sourceTree = "<group>"; };
 		5DE320C1290276D6009613A3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "../../../../Documents/Movie-App-Group-7-Done/Movie-App-Group-7/ViewController.swift"; sourceTree = "<group>"; };
 		5DE320C3290276E8009613A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Documents/Movie-App-Group-7-Done/Movie-App-Group-7/Assets.xcassets"; sourceTree = "<group>"; };
 		5DE320C52902776A009613A3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		5DE320CA2902782E009613A3 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = "../Movie-App-Group-7/LoginController.swift"; sourceTree = "<group>"; };
 		BF20611A28B1194E00F0915C /* Movie-App-Group-7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie-App-Group-7.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF20611D28B1194E00F0915C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF20611F28B1194E00F0915C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +75,6 @@
 		5DE3207729027318009613A3 /* AuthSingleton */ = {
 			isa = PBXGroup;
 			children = (
-				5DE3207829027318009613A3 /* AuthSingleton.swift */,
 			);
 			path = AuthSingleton;
 			sourceTree = "<group>";
@@ -103,7 +102,7 @@
 			children = (
 				5DE320AF29027646009613A3 /* MovieListViewController.swift */,
 				5DE320B029027646009613A3 /* MovieLoader.swift */,
-				5DE320B129027646009613A3 /* ProfilePageController.swift */,
+				5D4A986329036E2500D914CE /* ProfilePageController.swift */,
 			);
 			name = TabBarController;
 			path = "../../../../Documents/Movie-App-Group-7-Done/TabBarController";
@@ -112,7 +111,8 @@
 		5DE320B7290276A9009613A3 /* StoryboardDesign */ = {
 			isa = PBXGroup;
 			children = (
-				5DE320CA2902782E009613A3 /* LoginController.swift */,
+				5D4A986F2903AA4A00D914CE /* AuthSingleton.swift */,
+				5D4A986529036E2900D914CE /* LoginController.swift */,
 				5DE320B8290276A9009613A3 /* MovieListCell.xib */,
 				5DE320BC290276A9009613A3 /* MovieListCell.swift */,
 			);
@@ -140,11 +140,11 @@
 			isa = PBXGroup;
 			children = (
 				5D1D03AE290271A3002709C0 /* Data Model */,
+				5DE3207729027318009613A3 /* AuthSingleton */,
 				5DE320B7290276A9009613A3 /* StoryboardDesign */,
 				5DE320AE29027646009613A3 /* TabBarController */,
 				5DE3209F2902760C009613A3 /* MovieDetails */,
 				5DE3207A2902733B009613A3 /* Extension */,
-				5DE3207729027318009613A3 /* AuthSingleton */,
 				BF20611D28B1194E00F0915C /* AppDelegate.swift */,
 				5DE320C52902776A009613A3 /* Main.storyboard */,
 				BF20611F28B1194E00F0915C /* SceneDelegate.swift */,
@@ -235,14 +235,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D4A986429036E2500D914CE /* ProfilePageController.swift in Sources */,
 				5DE320C0290276A9009613A3 /* MovieListCell.swift in Sources */,
+				5D4A98702903AA7A00D914CE /* AuthSingleton.swift in Sources */,
 				5D1D03B1290271A3002709C0 /* kfMovieList.swift in Sources */,
+				5D4A986629036E2900D914CE /* LoginController.swift in Sources */,
 				5DE320C2290276D6009613A3 /* ViewController.swift in Sources */,
-				5DE320CB2902782E009613A3 /* LoginController.swift in Sources */,
-				5DE320B529027646009613A3 /* ProfilePageController.swift in Sources */,
 				BF20611E28B1194E00F0915C /* AppDelegate.swift in Sources */,
 				5DE320A82902760C009613A3 /* MovieDetails.swift in Sources */,
-				5DE3207929027318009613A3 /* AuthSingleton.swift in Sources */,
 				5D1D03B2290271A3002709C0 /* MovieList.swift in Sources */,
 				5DE320B329027646009613A3 /* MovieListViewController.swift in Sources */,
 				BF20612028B1194E00F0915C /* SceneDelegate.swift in Sources */,
